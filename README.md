@@ -13,36 +13,38 @@ The Context Engineering Framework provides:
 
 ## 🚀 Quick Start
 
-### 1. Install the Framework
+### Prerequisites
+- Node.js (v14 or higher)
+- Git (optional, for cloning)
+
+### 1. Get the Framework
 ```bash
 # Clone the framework
 git clone <repository-url> context-engineering
 cd context-engineering
 
-# Copy templates to your project
-cp -r context-templates memory-bank workflows prompting your-project/
+# Run setup (optional - adds helpful aliases)
+bash scripts/setup.sh
 ```
 
-### 2. Initialize Your Project
+### 2. Create Your Project
 ```bash
-# Create your memory bank
-cd your-project
-mkdir memory-bank
+# One command to set up everything!
+node scripts/init-project.js my-awesome-project
 
-# Copy essential templates
-cp context-templates/prd-template.md memory-bank/PRD.md
-cp context-templates/architecture-template.md memory-bank/ARCHITECTURE.md
-cp context-templates/task-tracker-template.md memory-bank/TASK-TRACKER.md
-cp context-templates/test-framework-template.md memory-bank/TEST-FRAMEWORK.md
-cp context-templates/defect-tracking-template.md memory-bank/DEFECTS.md
+# Navigate to your new project
+cd my-awesome-project
 ```
 
 ### 3. Start with Claude Code
+Open your project in Claude Code and begin with:
 ```
 @memory-bank/PRD.md
 Help me create a PRD for [your project description].
 Let's define the requirements comprehensively.
 ```
+
+That's it! Your project is ready with all templates, structure, and documentation in place.
 
 ## 📁 Framework Structure
 
@@ -65,9 +67,13 @@ context-engineering/
 ├── prompting/                  # AI interaction patterns
 │   ├── session-protocols.md    # Session management
 │   └── context-patterns.md     # Context optimization
-├── scripts/                    # Automation tools (coming soon)
+├── scripts/                    # Automation tools
+│   ├── init-project.js         # Project initialization
+│   ├── setup.sh                # Framework setup
+│   ├── validate-context.js     # Validation tool
+│   └── generate-claude-md.js   # CLAUDE.md generator
 ├── examples/                   # Example implementations (coming soon)
-└── docs/                       # Additional documentation (coming soon)
+└── docs/                       # Additional documentation
 ```
 
 ## 🔄 Core Workflow
@@ -126,37 +132,57 @@ Optimized patterns for:
 - Progress tracking
 - Quality validation
 
+## 🛠️ Available Scripts
+
+The framework includes several helpful automation scripts:
+
+### `init-project.js`
+Creates a new project with all necessary structure and templates.
+```bash
+node scripts/init-project.js <project-name>
+```
+
+### `validate-context.js`
+Validates your project setup and reports any missing components.
+```bash
+node scripts/validate-context.js
+# Add --verbose for detailed output
+```
+
+### `generate-claude-md.js`
+Updates CLAUDE.md based on your project's current state.
+```bash
+node scripts/generate-claude-md.js
+```
+
+### `setup.sh`
+One-time setup script for the framework (adds helpful aliases).
+```bash
+bash scripts/setup.sh
+```
+
 ## 🎓 Getting Started Guide
 
-### Step 1: Project Setup
-1. Copy framework to your project
-2. Initialize memory bank with templates
-3. Create initial PRD with Claude Code
-4. Design architecture based on requirements
-5. Generate task list from PRD
+### For New Projects
+1. Clone this framework repository
+2. Run `node scripts/init-project.js your-project-name`
+3. Navigate to your new project directory
+4. Open in Claude Code and start with `@memory-bank/PRD.md`
 
-### Step 2: Development Cycle
-1. Start session with context loading
-2. Select next task from tracker
-3. Write tests first (TDD)
-4. Implement solution
-5. Validate with tests
-6. Update documentation
-7. Get user approval
+### For Existing Projects
+1. Clone this framework to a nearby directory
+2. Run the init script from your project: `node ../context-engineering/scripts/init-project.js .`
+3. Or manually copy the templates you need
+4. Run validation to ensure setup is complete
 
-### Step 3: Quality Assurance
-1. Maintain 80% test coverage
-2. Track all defects systematically
-3. Run regression tests regularly
-4. Performance test critical paths
-5. Security scan before deployment
-
-### Step 4: Deployment
-1. Complete deployment checklist
-2. Deploy to staging first
-3. Validate thoroughly
-4. Deploy to production with monitoring
-5. Be ready to rollback if needed
+### Development Flow
+1. **Define** → Create comprehensive PRD
+2. **Design** → Document technical architecture
+3. **Plan** → Generate and organize tasks
+4. **Execute** → Implement with TDD
+5. **Validate** → Test thoroughly
+6. **Deploy** → Release safely
+7. **Maintain** → Keep docs current
 
 ## 💡 Best Practices
 
@@ -212,6 +238,27 @@ Integrate with your tools:
 - Monitoring platforms
 - Communication tools
 - Version control hooks
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**"node: command not found"**
+- Install Node.js from [nodejs.org](https://nodejs.org)
+- Ensure Node.js v14 or higher is installed
+
+**"Permission denied" when running scripts**
+- Make scripts executable: `chmod +x scripts/*.js`
+- Or run with node directly: `node scripts/init-project.js`
+
+**"Directory already exists" error**
+- Choose a different project name
+- Or remove the existing directory first
+
+**Scripts not finding templates**
+- Ensure you're running from the framework root directory
+- Check that all directories were cloned/downloaded properly
+- Run `node scripts/validate-context.js` to check setup
 
 ## 🤝 Contributing
 

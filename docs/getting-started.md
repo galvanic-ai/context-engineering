@@ -12,54 +12,66 @@ Before starting, ensure you have:
 
 ## 🚀 Setting Up the Framework
 
-### Option 1: Clone the Repository
+### Step 1: Get the Framework
 ```bash
-# Clone the framework
+# Clone the framework repository
 git clone <repository-url> context-engineering
 cd context-engineering
+
+# Optional: Run the setup script for helpful aliases
+bash scripts/setup.sh
 ```
 
-### Option 2: Download Templates
-If you can't clone, download the key directories:
-- `context-templates/` - All document templates
-- `workflows/` - Workflow guides
-- `prompting/` - AI interaction patterns
+### Step 2: Verify Installation
+```bash
+# Check that everything is properly installed
+node scripts/validate-context.js
+
+# You should see all green checkmarks!
+```
 
 ## 📁 Initialize Your Project
 
-### Step 1: Create Project Structure
+### The Easy Way (Recommended)
 ```bash
-# Create your project directory
-mkdir my-awesome-project
+# From the framework directory, create a new project
+node scripts/init-project.js my-awesome-project
+
+# Navigate to your new project
 cd my-awesome-project
 
-# Create necessary directories
-mkdir -p memory-bank workflows prompting
+# That's it! Everything is set up and ready to go
+```
 
-# Copy framework components to your project
+### What Gets Created
+The initialization script automatically:
+- ✅ Creates project directory structure
+- ✅ Copies all templates to memory-bank/
+- ✅ Renames templates to proper filenames
+- ✅ Sets up workflows and prompting directories
+- ✅ Creates project-specific CLAUDE.md
+- ✅ Generates .gitignore
+- ✅ Creates initial README.md
+
+### Manual Setup (If Needed)
+If you prefer manual setup or need to customize:
+```bash
+# Create your project directory
+mkdir my-project && cd my-project
+
+# Create the structure
+mkdir -p memory-bank workflows prompting src tests docs
+
+# Copy templates from framework
 cp -r ../context-engineering/context-templates/* ./memory-bank/
 cp -r ../context-engineering/workflows/* ./workflows/
 cp -r ../context-engineering/prompting/* ./prompting/
-```
 
-### Step 2: Set Up Memory Bank
-```bash
-# Your memory bank should now contain:
-ls memory-bank/
-# prd-template.md
-# architecture-template.md  
-# task-tracker-template.md
-# test-framework-template.md
-# defect-tracking-template.md
-# task-generation-template.md
-
-# Rename templates for actual use
+# Rename templates
 cd memory-bank
-mv prd-template.md PRD.md
-mv architecture-template.md ARCHITECTURE.md
-mv task-tracker-template.md TASK-TRACKER.md
-mv test-framework-template.md TEST-FRAMEWORK.md
-mv defect-tracking-template.md DEFECTS.md
+for file in *-template.md; do
+  mv "$file" "${file%-template.md}.md"
+done
 ```
 
 ## 🔄 The Core Workflow

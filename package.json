@@ -1,0 +1,33 @@
+{
+  "name": "context-engineering-framework",
+  "version": "1.0.0",
+  "description": "A comprehensive framework for managing context, tasks, and quality in AI-assisted software development projects using Claude Code",
+  "main": "scripts/init-project.js",
+  "scripts": {
+    "init": "node scripts/init-project.js",
+    "validate": "node scripts/validate-context.js",
+    "generate-claude": "node scripts/generate-claude-md.js",
+    "setup": "bash scripts/setup.sh"
+  },
+  "keywords": [
+    "ai",
+    "claude",
+    "context-engineering",
+    "development-framework",
+    "task-management",
+    "tdd"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/context-engineering.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-username/context-engineering/issues"
+  },
+  "homepage": "https://github.com/your-username/context-engineering#readme"
+}
